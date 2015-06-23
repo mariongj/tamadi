@@ -18,9 +18,25 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to "#" do %>
-              <i class="fa fa-envelope-o"></i> Messages
+              <p>Profile</p>
             <% end %>
           </li>
+          <li>
+            <%= link_to "#" do %>
+              <p>Rent your flat</p>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              <p>Bookings</p>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              <p>Log out</p>
+            <% end %>
+          </li>
+
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <%= image_tag "http://lorempixel.com/30/30/people", class: "img-avatar" %>
@@ -36,7 +52,7 @@
             </ul>
           </li>
           <li>
-            <%= link_to "Add something", "#", class: "btn" %>
+            <%= link_to "Sign in", "#", class: "btn" %>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
