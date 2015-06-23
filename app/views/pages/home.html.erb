@@ -1,0 +1,71 @@
+<div class="banner window-height">
+  <div class="container">
+   <h1>Welcome in my beautiful farm</h1>
+   <p>
+      Discover the universe of old people !
+   </p>
+   <a class='btn btn-success btn-lg'>Get your old house</a>
+
+   <div class="arrow-container text-center ">
+     <a href="#features">
+       <i class="fa fa-angle-down pulse"></i>
+     </a>
+   </div>
+
+  </div>
+</div>
+
+
+  <div class="features">
+    <div class="container text-center" >
+      <div class="row">
+        <div class="col-sm-4 padding-sides-15">
+          <div class="card" data-sr="wait 1s, ease-in-out 100px">
+            <%= image_tag "livingroom1.jpg", class: "img-rounded img-size" %>
+            <h2>Chez Jean-mi </h2>
+            <p>Magnifique maison de 100 m2 dans le Vercors</p>
+          </div>
+        </div>
+
+        <div class="col-sm-4 padding-sides-15">
+          <div class="card" data-sr="wait 3s, ease-in-out 100px">
+             <%= image_tag "livingroom4.jpg", class: "img-rounded img-size" %>
+            <h2> Chez Bernadette </h2>
+            <p> Il y'a toujours de la place pour des voyageurs dans la maison de Bernadette</p>
+          </div>
+        </div>
+
+        <div class="col-sm-4 padding-sides-15">
+          <div class="card" data-sr="wait 4s, ease-in-out 100px">
+            <%= image_tag "livingroom2.jpg", class: "img-rounded img-size"%>
+             <h2> Chez Jeannine</h2>
+             <p>Tout est aménagé pour se sentir comme à la maison</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+      <div class="arrow-container text-center ">
+        <a href="#news">
+          <i class="fa fa-angle-down pulse"></i>
+        </a>
+   </div>
+
+  </div>
+
+  <div class="text-center padded" id ="news">
+    <div class="container">
+      <h2>Get news from stylus</h2>
+      <p>Leave us your mail and get stylus news</p>
+      <form class="form-inline">
+        <input type="email" placeholder="bob@gmail.com" class="form-control">
+        <input type="submit" value="Subscribe" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+
+
+
+  <script>
+      window.sr = new scrollReveal();
+  </script>

@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   # get 'flats/delete'
 
 
+  root to: "pages#home"
 end
