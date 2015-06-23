@@ -55,3 +55,6 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
+
