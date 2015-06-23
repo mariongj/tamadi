@@ -1,2 +1,22 @@
-<h1>Flats#show</h1>
-<p>Find me in app/views/flats/show.html.erb</p>
+<h1><%= @flat.title %></h1>
+<br>
+  <!-- <li><%= @flat.description %></li> -->
+  <li><%= @flat.price_per_night %>€ / night</li>
+  <li><%= @flat.capacity %> persons</li>
+  <li><%= @flat.address %></li>
+  <br>
+</ul>
+
+<p><%= link_to "Back to Search results", flats_path %></p>
+
+<h2>Book</h2>
+  <%= simple_form_for [@flat, @booking] do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :nb_travelers %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :message %>
+
+    <%= f.submit "Book" %>
+  <% end %>

@@ -1,2 +1,11 @@
-<h1>Flats#index</h1>
-<p>Find me in app/views/flats/index.html.erb</p>
+<h1><%= @flats.size %> Search results</h1>
+<br>
+
+<ul>
+  <% @flats.each do |flat| %>
+    <li><h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span></li>
+    <br>
+  <% end %>
+</ul>
+
+<%= link_to "Rent Your Flat" , new_flat_path %>
