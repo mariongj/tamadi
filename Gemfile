@@ -56,3 +56,10 @@ ruby '2.2.2'
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 
+gem 'devise'
+
+gem 'figaro'
+
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
+
