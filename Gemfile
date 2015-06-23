@@ -43,3 +43,16 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'font-awesome-sass', '~> 4.2.0'
+gem 'simple_form'
+
+ruby '2.2.2'
+gem 'rails_12factor', group: :production
+gem 'puma',           group: :production
+
