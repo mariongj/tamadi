@@ -1,2 +1,12 @@
-<h1>Flats#edit</h1>
-<p>Find me in app/views/flats/edit.html.erb</p>
+<h1>Edit Your Flat "<%= @flat.title %>"</h1>
+<br>
+
+<%= simple_form_for [@user, @flat] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :price_per_night %>
+  <%= f.input :capacity %>
+  <%= f.submit %>
+<% end %>

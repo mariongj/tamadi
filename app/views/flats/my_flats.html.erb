@@ -1,2 +1,26 @@
-<h1>Flats#my_flats</h1>
-<p>Find me in app/views/flats/my_flats.html.erb</p>
+<h1>My Profile</h1>
+<br>
+
+<p>Email: <%= current_user.email %></p>
+<p>Profile created at: <%= current_user.created_at %></p>
+<br>
+<br>
+
+<h2>My Flats</h2>
+<% @my_flats.each do |flat| %>
+  <h3><%= link_to flat.title, flat_path(flat) %></h3>
+  <p><%= flat.city %></p>
+  <p><%= flat.description %><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</p>
+  <p><%= link_to "edit", edit_flat_path(flat) %>
+  <%= link_to "delete", flat_path(flat),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+  </p>
+  <br>
+  <br>
+<% end %>
+
+<br>
+<br>
+<br>
+<p><%= link_to "Add a new flat", new_flat_path %></p>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :flats do
-    member do
+    collection do
       get 'my_flats', to: "flats#my_flats"
     end
     resources :bookings, only: [:create]
