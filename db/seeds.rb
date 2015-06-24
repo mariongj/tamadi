@@ -29,4 +29,4 @@ Flat.create!(title: "Gîte délabré charmant", address: "65 rue B, Oise", price
 Flat.create!(title: "Cave rurale", address: "32, rue souli, Trifoullis", price_per_night: 120, capacity: 1)
 Flat.create!(title: "Maison de campagne", address: "2, ravenue des tilleuls, Germines", price_per_night: 30, capacity: 7)
 
-Booking.create!(user_id: 3, flat_id: 4, nb_travelers: 2, start_time: "10 juillet 2015", end_time: "12 aout 2015", message:"I love your flat", status: "pending")
+Booking.create!(user_id: User.first.id, flat_id: Flat.first.id, nb_travelers: 2, start_date: "10 juillet 2015", end_date: "12 aout 2015", message:"I love your flat", status: "pending")
