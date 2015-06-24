@@ -1,7 +1,13 @@
 class BookingsController < ApplicationController
-
+before_action :set_booking, only: [ :destroy ]
   def index
     @bookings = current_user.bookings
+    @my_flats = current_user.flats
+    @bookings_client = []
+    @my_flats.each do |flat|
+      @bookings_client << flat.bookings
+    end
+    @bookings_client.flatten!
   end
 
   def new
@@ -23,12 +29,16 @@ class BookingsController < ApplicationController
     end
   end
 
- def delete
+  def destroy
     @booking.destroy
     redirect_to bookings_path
   end
 
 private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:nb_travelers, :start_date, :end_date, :message)
