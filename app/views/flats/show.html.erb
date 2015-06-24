@@ -4,6 +4,7 @@
   <li><%= @flat.price_per_night %>€ / night</li>
   <li><%= @flat.capacity %> persons</li>
   <li><%= @flat.address %></li>
+  <li><%= @flat.city %></li>
   <br>
 </ul>
 
@@ -18,5 +19,5 @@
     <%= f.input :end_date %>
     <%= f.input :message %>
 
-    <%= f.submit "Book" %>
+    <%= f.submit "Book", class: "btn btn-success btn-lg" %>
   <% end %>
