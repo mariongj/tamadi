@@ -4,6 +4,8 @@
 <p>Email: <%= current_user.email %></p>
 <p>Profile created at: <%= current_user.created_at %></p>
 <br>
+<p><%= link_to "Go to My Bookings", bookings_path %></p>
+<br>
 <br>
 
 <h2>My Flats</h2>
@@ -21,6 +23,5 @@
 <% end %>
 
 <br>
-<br>
-<br>
-<p><%= link_to "Add a new flat", new_flat_path %></p>
+<p><%= link_to "Add a new flat", new_flat_path, class: "btn btn-success" %></p>
+
