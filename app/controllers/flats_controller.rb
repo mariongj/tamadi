@@ -3,8 +3,9 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    if params[:city]
+    if params[:city] && params[:capacity]
       @flats = Flat.where(city: params[:city])
+        .where("capacity >= ?", params[:capacity])
     else
       @flats = Flat.all
     end
