@@ -4,7 +4,12 @@
    <p>
       Discover the universe of old people !
    </p>
-   <a class='btn btn-success btn-lg'>Get your old house</a>
+   <p>
+     <%= form_tag(flats_path, method: :get) do %>
+      <%= select_tag "city", options_for_select(@cities), prompt: "Select city" %>
+      <%= submit_tag "Get your old house", class: "btn btn-success btn-lg" %>
+     <% end %>
+   </p>
 
    <div class="arrow-container text-center ">
      <a href="#features">
