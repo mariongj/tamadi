@@ -23,9 +23,10 @@ class BookingsController < ApplicationController
     end
   end
 
-
-
-
+ def delete
+    @booking.destroy
+    redirect_to bookings_path
+  end
 
 private
 
