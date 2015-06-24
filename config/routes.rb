@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # root to: "home#index"
 
   resources :flats do
-    member do
+    collection do
       get 'my_flats', to: "flats#my_flats"
     end
   end

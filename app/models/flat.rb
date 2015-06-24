@@ -6,5 +6,6 @@ class Flat < ActiveRecord::Base
   validates :address, presence: true
   validates :capacity, presence: true
   validates :price_per_night, presence: true
+  validates :city, presence: true
 
 end
