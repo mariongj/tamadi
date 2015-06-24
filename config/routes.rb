@@ -1,28 +1,14 @@
 Rails.application.routes.draw do
+  root to: "pages#home"
+
   devise_for :users
-  # root to: "home#index"
 
   resources :flats do
     member do
       get 'my_flats', to: "flats#my_flats"
     end
+    resources :bookings, only: [:create]
   end
 
-  # get 'flats/index'
-
-  # get 'flats/show'
-
-  # get 'flats/new'
-
-  # get 'flats/create'
-
-  # get 'flats/edit'
-
-  # get 'flats/update'
-
-  # get 'flats/delete'
-
-
-  root to: "pages#home"
-  resources :bookings
+  resources :bookings, only: [:index]
 end

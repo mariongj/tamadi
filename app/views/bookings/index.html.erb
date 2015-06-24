@@ -1,1 +1,7 @@
-<p>Hello</p>
+
+<div class="index_booking"><div class="padded">
+  <h1 class="text-center">List of your bookings</h1>
+  <% @bookings.each do |booking| %>
+    <h2><%= booking.flat.title %></h2>
+  <% end %>
+</div>
