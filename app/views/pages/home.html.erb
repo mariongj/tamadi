@@ -1,8 +1,11 @@
 <div class="banner window-height">
   <div class="container">
-   <h1>Welcome in my beautiful farm</h1>
+   <h1>Meet Real France</h1>
+   <br>
+   <br>
+   <br>
    <p>
-      Discover the universe of old people !
+      Live the life of true French people !
    </p>
    <div class="form_inline">
      <%= form_tag(flats_path, method: :get) do %>
@@ -10,6 +13,9 @@
       <%# select_tag "capacity", options_for_select(@capacities), prompt: "Number of Travellers" %>
       <%= number_field_tag "capacity", nil, placeholder: 'num of travellers' %>
       <%= submit_tag "Get your old house", class: "btn btn-success btn-lg" %>
+   <br>
+   <br>
+   <br>
      <% end %>
    </div>
 
@@ -63,8 +69,8 @@
 
   <div class="text-center padded" id ="news">
     <div class="container">
-      <h2>Get news from stylus</h2>
-      <p>Leave us your mail and get stylus news</p>
+      <h2>Get news from RobertBnB</h2>
+      <p>Leave us your mail</p>
       <form class="form-inline">
         <input type="email" placeholder="bob@gmail.com" class="form-control">
         <input type="submit" value="Subscribe" class="btn btn-primary">

@@ -1,7 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :find_flat, only: [ :show ]
-  # , only: [ :show, :new, :create, :edit, :update, :delete, :my_flats ]
-  before_action :find_user, only: [ :my_flats ]
+  before_action :find_flat, only: [ :show, :edit, :update, :destroy ]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
@@ -22,10 +20,9 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = Flat.new(flat_params)
-    @flat.save
+    @flat = current_user.flats.build(flat_params)
     if @flat.save
-      redirect_to flat_path(@flat)
+      redirect_to my_flats_flats_path
     else
       render :new
     end
@@ -36,17 +33,17 @@ class FlatsController < ApplicationController
 
   def update
     @flat.update(flat_params)
-    redirect_to flat_path(@flat)
+    redirect_to my_flats_flats_path
   end
 
-  def delete
+  def destroy
     @flat.destroy
-    redirect_to flats_path
+    redirect_to my_flats_flats_path
   end
 
-  # def my_flats
-  #   @my_flats = @user.flats
-  # end
+  def my_flats
+    @my_flats = current_user.flats
+  end
 
   private
 
@@ -54,11 +51,7 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
   end
 
-  def find_user
-    @user = User.find(params[:user_id])
-  end
-
   def flat_params
-    params.require(:flat).permit(:user_id, :title, :address, :description, :price_per_night, :capacity)
+    params.require(:flat).permit(:user_id, :title, :address, :city, :description, :price_per_night, :capacity)
   end
 end
