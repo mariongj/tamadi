@@ -1,9 +1,14 @@
 class FlatsController < ApplicationController
   before_action :find_flat, only: [ :show, :edit, :update, :destroy ]
-  # , only: [ :show, :new, :create, :edit, :update, :delete, :my_flats ]
+  before_action :find_user, only: [ :my_flats ]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @flats = Flat.all
+    if params[:city]
+      @flats = Flat.where(city: params[:city])
+    else
+      @flats = Flat.all
+    end
   end
 
   def show
