@@ -14,6 +14,9 @@
   # User.create!(email: "Bernadette@caramail.fr", encrypted_password: "hello")
   # User.create!(email: "Milady@caramail.fr", encrypted_password: "hello")
 
+User.destroy_all
+Flat.destroy_all
+
   User.create!(email: 'palo@alto.com', password: '123456789', password_confirmation: '123456789')
   User.create!(email: 'gerard@caramail.fr', password: '123456789', password_confirmation: '123456789')
   User.create!(email: 'Gertrude@caramail.fr', password: '123456789', password_confirmation: '123456789')
