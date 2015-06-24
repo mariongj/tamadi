@@ -21,7 +21,7 @@
   User.create!(email: 'Bernadette@caramail.fr', password: '123456789', password_confirmation: '123456789')
   User.create!(email: 'Milady@caramail.fr', password: '123456789', password_confirmation: '123456789')
 
- Flat.create!(title: "Maison de fou", address: "32, rue blabla, Trifoullis", price_per_night: 20, capacity: 17)
- Flat.create!(title: "Gîte délabré charmant", address: "65 rue B, Oise", price_per_night: 420, capacity: 3)
- Flat.create!(title: "Cave rurale", address: "32, rue souli, Trifoullis", price_per_night: 120, capacity: 1)
- Flat.create!(title: "Maison de campagne", address: "2, ravenue des tilleuls, Germines", price_per_night: 30, capacity: 7)
+ Flat.create!(title: "Maison de fou", address: "32, rue blabla", city: "Trifoullis", price_per_night: 20, capacity: 17)
+ Flat.create!(title: "Gîte délabré charmant", address: "65 rue Bled", city: "Oise", price_per_night: 420, capacity: 3)
+ Flat.create!(title: "Cave rurale", address: "32, rue souli", city: "Trifoullis", price_per_night: 120, capacity: 1)
+ Flat.create!(title: "Maison de campagne", address: "2, ravenue des tilleuls", city: "Germines", price_per_night: 30, capacity: 7)
