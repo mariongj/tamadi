@@ -7,9 +7,12 @@
    <p>
      <%= form_tag(flats_path, method: :get) do %>
       <%= select_tag "city", options_for_select(@cities), prompt: "Select city" %>
+      <%# select_tag "capacity", options_for_select(@capacities), prompt: "Number of Travellers" %>
+      <%= number_field_tag :capacity  %>
       <%= submit_tag "Get your old house", class: "btn btn-success btn-lg" %>
      <% end %>
    </p>
+
 
    <div class="arrow-container text-center ">
      <a href="#features">

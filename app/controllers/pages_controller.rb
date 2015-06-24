@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @cities = Flat.select(:city).distinct.map { |flat| flat.city }
+    @capacities = Flat.select(:capacity).distinct.map{ |flat| flat.capacity }
   end
 end
