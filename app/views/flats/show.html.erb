@@ -1,10 +1,10 @@
 <h1><%= @flat.title %></h1>
+<%= image_tag @flat.picture.url(:medium) %>
 <br>
-  <!-- <li><%= @flat.description %></li> -->
+  <li>Description: <%= @flat.description %></li>
   <li><%= @flat.price_per_night %>€ / night</li>
   <li><%= @flat.capacity %> persons</li>
-  <li><%= @flat.address %></li>
-  <li><%= @flat.city %></li>
+  <li>Address: <%= @flat.address %>, <%= @flat.city %></li>
   <br>
 </ul>
 
