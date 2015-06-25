@@ -14,7 +14,7 @@
                 <td>  <%= link_to booking_path(booking),
                       method: :delete,
                       data: { confirm: "Are you sure?" } do %>
-                    <i class="fa fa-trash-o"></i> Delete this booking
+                    <i class="fa fa-trash-o"></i>
                   <% end %>
               </td>
               <% end %>
@@ -35,9 +35,16 @@
                 <td ><%= booking.start_date%> au <%= booking.end_date %></td>
                 <td><%= booking.nb_travelers%></td>
                 <td><%= booking.status %></td>
-                <td>  <%= button_to "Accept", { action: "update", id: booking.id }, method:   :put, params: { accept: true } %>
-                      <%= button_to "Refuse", { action: "update", id: booking.id }, method: :put, params: { accept: false } %>
+                <td>
+                <%= link_to booking_path(booking, accept: true), method: :put do %>
+                  <i class="fa fa-check"></i> Accept
+                <% end %>
+-
+                <%= link_to booking_path(booking, accept: false), method: :put do %>
+                  <i class="fa fa-times"></i> Refuse
+                <% end %>
                 </td>
+
               <% end %>
             </tr>
           </tbody>
