@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :flats
   has_many :bookings
 
+  after_create :send_welcome_email
   #has_many :trip_flats, through: :bookings, as: :flat
 
   # validates :name, presence: true
@@ -24,4 +25,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
