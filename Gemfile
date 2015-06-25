@@ -30,6 +30,8 @@ gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 ruby '2.2.2'
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 
 # Use ActiveModel has_secure_password
