@@ -4,3 +4,13 @@
  * Before writing in this file, look if there is not
  * already a Bootstrap SCSS variable that does the same job
  * ------------------------------------- */
+
+  .white_card {
+ text-align: center;
+ margin: 2% 10%;
+ padding: 10px;
+ background-color: #FFFFFF ;
+ border-radius: 2px;
+ border-width: thin;
+ box-shadow: 0 0 20px #E6E6E6 ;
+}

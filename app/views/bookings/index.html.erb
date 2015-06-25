@@ -1,31 +1,56 @@
 
-<div class="index_booking"><div class="padded">
-  <h1 class="text-center">List of your bookings</h1>
-    <ul class ="list">
-      <% @bookings.each do |booking| %>
-        <li>
-          <p><%= booking.flat.title %></p>
-            <%= link_to booking_path(booking),
-              method: :delete,
-              data: { confirm: "Are you sure?" } do %>
-            <i class="fa fa-trash-o"></i> Delete this booking
-          <% end %>
 
-        </li>
-      <% end %>
-    </ul>
-</div>
+    <div class="container ">
+      <div class= "white_card ">
+      <h1>All my bookings </h1>
+        <table class="bookings table table-striped">
+          <% @bookings.each do |booking| %>
+            <tbody>
+              <tr class="shadow-table">
+                <td ><%= link_to booking.flat.title, flat_path(booking.flat)%></td>
+                <td ><%= booking.start_date%> au <%= booking.end_date %></td>
+                <td><%= booking.nb_travelers%></td>
+                <td><%= booking.status %></td>
+                <td>  <%= link_to booking_path(booking),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-trash-o"></i> Delete this booking
+                  <% end %>
+              </td>
+              <% end %>
+              </tr>
+          </tbody>
+        </table>
+     </div>
+  </div>
+  <br>
+    <div class="container">
+     <div class= "white_card">
+      <h1>All the bookings on my flats  </h1>
+        <table class="bookings table">
+          <% @bookings.each do |booking| %>
+            <tbody>
+              <tr class="shadow-table">
+                <td ><%= link_to booking.flat.title, flat_path(booking.flat)%></td>
+                <td ><%= booking.start_date%> au <%= booking.end_date %></td>
+                <td><%= booking.nb_travelers%></td>
+                <td><%= booking.status %></td>
+                <td>  <%= button_to "Accept", { action: "update", id: booking.id }, method:   :put, params: { accept: true } %>
+                      <%= button_to "Refuse", { action: "update", id: booking.id }, method: :put, params: { accept: false } %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
 
-<div class="index_booking">
-<h1 class="text-center">List of your client bookings </h1>
- <ul class ="list">
-      <% @bookings_client.each do |booking| %>
-        <li>
-          <p><%= booking.flat.title %></p>
-        </li>
-      <% end %>
-    </ul>
-</div>
+
+
+
+
+
+
 
 
 
