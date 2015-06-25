@@ -1,4 +1,6 @@
 <h1>My Profile</h1>
+<%= current_user.picture.size %>
+<%= image_tag current_user.picture.url(:medium) %>
 <br>
 
 <p>Email: <%= current_user.email %></p>
