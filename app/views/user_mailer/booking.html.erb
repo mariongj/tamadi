@@ -1,0 +1,23 @@
+<h1>New Booking Request</h1>
+
+<p>
+  Hi <%= @owner.email %>
+</p>
+<p>
+  You just got a booking request from  <strong><%= @user.email %>
+</strong> for the following apartment:  <strong><%= @booking.flat.title %></strong>.
+</p>
+
+<p>
+  There will be <%= @booking.nb_travelers %> travellers, from
+  <%= @booking.start_date %> to <%= @booking.end_date %>
+</p>
+
+<p>
+  Cheers,
+</p>
+<p>
+  RobertBnb.
+</p>
+
+

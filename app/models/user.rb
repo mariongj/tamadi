@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }
 
+  after_create :send_welcome_email
+
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
@@ -25,4 +27,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end
