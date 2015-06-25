@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   has_many :flats
   has_many :bookings
+  has_attached_file :picture,
+    styles: { medium: "300x300>", thumb: "100x100>" }
 
   after_create :send_welcome_email
-  #has_many :trip_flats, through: :bookings, as: :flat
 
-  # validates :name, presence: true
+  validates_attachment_content_type :picture,
+    content_type: /\Aimage\/.*\z/
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

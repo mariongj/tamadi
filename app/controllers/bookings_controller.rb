@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-before_action :set_booking, only: [ :destroy ]
+before_action :set_booking, only: [ :destroy, :update ]
+
   def index
     @bookings = current_user.bookings
     @my_flats = current_user.flats
@@ -12,8 +13,7 @@ before_action :set_booking, only: [ :destroy ]
 
   def new
     @booking = Booking.new
-     @flat = Flat.find(params[:flat_id])
-
+    @flat = Flat.find(params[:flat_id])
   end
 
   def create
@@ -27,6 +27,17 @@ before_action :set_booking, only: [ :destroy ]
     else
       render 'flats/show'
     end
+  end
+
+  def update
+
+    if params[:accept]
+      # Accepter le booking dans la bdd donc changer le statut
+      @booking.update(status: 'confirmed')
+    elsif
+      @booking.update(status: 'refused')
+    end
+    redirect_to :back
   end
 
   def destroy
