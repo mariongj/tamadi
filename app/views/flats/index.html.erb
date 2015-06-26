@@ -3,9 +3,10 @@
 <div class="container">
  <% @flats.each do |flat| %>
     <div class= "white_card">
+        <%= image_tag flat.picture.url(:thumb) %>
         <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
             <br>
-          <%= link_to "Rent Your Flat" , new_flat_path %>
     </div>
   <% end %>
+  <%= link_to "Rent Your Flat" , new_flat_path %>
 </div>
