@@ -4,6 +4,9 @@ class Flat < ActiveRecord::Base
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :title, presence: true
   validates :address, presence: true
   validates :capacity, presence: true

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     collection do
       get 'my_flats', to: "flats#my_flats"
     end
+    member do
+      get 'my_flat', to: "flats#my_flat"
+    end
     resources :bookings, only: [:create]
   end
 
