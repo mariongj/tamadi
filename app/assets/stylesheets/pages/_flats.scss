@@ -34,4 +34,20 @@
   }
 }
 
+.relative {
+  position: relative;
+}
+
+.position {
+  position: absolute;
+  top: -46px;
+  right: 2px;
+  text-align: right;
+}
+
+.size {
+  width: 70px;
+  height: 70px;
+}
+
 

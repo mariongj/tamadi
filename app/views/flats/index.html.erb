@@ -1,10 +1,6 @@
 <div class="container">
-
   <div class= "white_card">
-
     <div class= "row padded">
-
-      <br>
       <h1><%= @flats.size %> Search results</h1>
 
       <br>
@@ -25,17 +21,18 @@
 
       <% @flats.each do |flat| %>
         <div class= "col-md-6">
-
           <div class= "card-place">
-
             <div class="card-place-header"
                 style="background-image: url(<%= flat.picture.url(:medium)%>);">
             </div>
-
-            <div class="card-place-body">
+            <div class="card-place-body relative">
               <h3><%= link_to flat.title, flat_path(flat) %></h3>
               <p><%= flat.price_per_night %>€/night</p>
               <p><%= flat.capacity %> persons</span></p>
+              <p><%= flat.description %></p>
+              <div class= "position">
+              <%= image_tag flat.user.picture.url(:medium), class: "img-circle size"%>
+              </div>
             </div>
 
             <div class="card-place-footer">
