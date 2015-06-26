@@ -34,7 +34,7 @@
      <div class= "white_card">
       <h1>All the bookings on my flats  </h1>
         <table class="bookings table">
-          <% @bookings.each do |booking| %>
+          <% @bookings_client.each do |booking| %>
             <tbody>
               <tr class="shadow-table">
                 <td ><%= link_to booking.flat.title, flat_path(booking.flat)%></td>
