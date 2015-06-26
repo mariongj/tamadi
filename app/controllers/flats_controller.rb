@@ -9,10 +9,22 @@ class FlatsController < ApplicationController
     else
       @flats = Flat.all
     end
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   def show
     @booking = Booking.new
+    @flats = []
+    @flats << @flat
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   def new
@@ -43,6 +55,11 @@ class FlatsController < ApplicationController
 
   def my_flats
     @my_flats = current_user.flats
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@my_flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   private

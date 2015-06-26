@@ -5,6 +5,23 @@
   <li><%= @flat.price_per_night %>€ / night</li>
   <li><%= @flat.capacity %> persons</li>
   <li>Address: <%= @flat.address %>, <%= @flat.city %></li>
+  <div class="container">
+        <div id="map" style='width: 400px; height: 400px'></div>
+
+        <% content_for(:after_js) do %>
+          <script type="text/javascript">
+            $(document).on('ready', function() {
+              handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function(){
+                markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(12);
+              });
+            })
+          </script>
+        <% end %>
+      </div>
   <br>
 </ul>
 

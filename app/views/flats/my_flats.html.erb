@@ -31,6 +31,22 @@
         <br>
       <% end %>
 
+        <div id="map" style='width: 400px; height: 400px'></div>
+
+        <% content_for(:after_js) do %>
+          <script type="text/javascript">
+            $(document).on('ready', function() {
+              handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function(){
+                markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(12);
+              });
+            })
+          </script>
+        <% end %>
+
       <br>
       <p><%= link_to "Add a new flat", new_flat_path, class: "btn btn-success" %></p>
 
