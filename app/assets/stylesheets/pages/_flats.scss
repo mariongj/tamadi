@@ -1,0 +1,37 @@
+.card-place {
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px #E7E7E7;
+  margin: 50px;
+  &-header {
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  &-body {
+    min-height: 300px;
+    padding: 20px;
+    a {
+      font-size: 20px;
+    }
+  }
+  &-footer {
+    text-align: right;
+    i {
+      color: white;
+      padding: 10px;
+      font-size: 20px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    .card-place-footer i {
+      color: #E6E6E6;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}
+
+

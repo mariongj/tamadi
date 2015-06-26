@@ -1,12 +1,41 @@
-<h1><%= @flats.size %> Search results</h1>
-        <br>
+
 <div class="container">
- <% @flats.each do |flat| %>
-    <div class= "white_card">
-        <%= image_tag flat.picture.url(:thumb) %>
-        <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
-            <br>
+
+  <div class= "white_card">
+
+    <div class= "row padded">
+
+      <h1><%= @flats.size %> Search results</h1>
+        <% @flats.each do |flat| %>
+        <div class= "col-md-6">
+
+          <div class= "card-place">
+
+            <div class="card-place-header"
+                  style="background-image: url(<%= flat.picture.url(:medium)%>);">
+             </div>
+
+             <div class="card-place-body">
+              <h3><%= link_to flat.title, flat_path(flat) %>
+              </h3>
+              <p><%= flat.price_per_night %>€/night</p>
+              <p><%= flat.capacity %> persons</span></p>
+             </div>
+
+             <div class="card-place-footer">
+              <%= link_to flat_path(flat) do %>
+              <i class="fa fa-search"></i>
+                  <% end %>
+            </div>
+
+          <% end %>
+
+
+        </div>
+      </div>
+
     </div>
-  <% end %>
-  <%= link_to "Rent Your Flat" , new_flat_path %>
+  </div>
 </div>
+
+

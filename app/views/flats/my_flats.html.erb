@@ -14,25 +14,41 @@
 </div>
 
 <div class="container">
-    <div class= "white_card">
-
-      <h2>My Flats</h2>
+  <div class= "white_card">
+    <div class= "row padded">
+      <h1>My Flats</h1>
       <% @my_flats.each do |flat| %>
-        <p><%= image_tag flat.picture.url(:thumb) %></p>
-        <h3><%= link_to flat.title, flat_path(flat) %></h3>
-        <p><%= flat.city %></p>
-        <p><%= flat.description %>, <%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</p>
-        <p><%= link_to "edit", edit_flat_path(flat) %>
-        <%= link_to "delete", flat_path(flat),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-        </p>
-        <br>
-        <br>
+        <div class= "col-md-6">
+          <div class= "card-place">
+            <div class="card-place-header"
+                  style="background-image: url(<%= flat.picture.url(:medium)%>);">
+            </div>
+            <div class="card-place-body">
+              <h3><%= link_to flat.title, flat_path(flat) %></h3>
+              <p><%= flat.city %></p>
+              <p><%= flat.description %> </p>
+              <p><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</p>
+            </div>
+            <div class="card-place-footer">
+              <%= link_to edit_flat_path(flat) do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              <%= link_to flat_path(flat),
+                method: :delete,
+                data: { confirm: "Are you sure?" } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
-
-      <br>
-      <p><%= link_to "Add a new flat", new_flat_path, class: "btn btn-success" %></p>
-
     </div>
+   <p><%= link_to "Add a new flat", new_flat_path, class: "btn btn-success" %></p>
+  </div>
 </div>
+
+
+
+
+
+
