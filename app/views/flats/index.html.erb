@@ -2,6 +2,23 @@
   <div class= "white_card">
     <div class= "row padded">
       <h1><%= @flats.size %> Search results</h1>
+
+      <br>
+        <div id="map" style='width: 750px; height: 200px'></div>
+        <% content_for(:after_js) do %>
+          <script type="text/javascript">
+            $(document).on('ready', function() {
+              handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function(){
+                markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(12);
+              });
+            })
+          </script>
+        <% end %>
+
       <% @flats.each do |flat| %>
         <div class= "col-md-6">
           <div class= "card-place">
@@ -25,21 +42,6 @@
             </div>
         </div>
       <% end %>
-
-      <div id="map" style='width: 800px; height: 400px'></div>
-        <% content_for(:after_js) do %>
-          <script type="text/javascript">
-            $(document).on('ready', function() {
-              handler = Gmaps.build('Google');
-              handler.buildMap({ internal: { id: 'map' } }, function(){
-                markers = handler.addMarkers(<%= raw @markers.to_json %>);
-                handler.bounds.extendWith(markers);
-                handler.fitMapToBounds();
-                handler.getMap().setZoom(12);
-              });
-            })
-          </script>
-        <% end %>
 
     </div>
   </div>

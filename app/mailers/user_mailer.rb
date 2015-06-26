@@ -5,18 +5,18 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome(user)
-    @user = user
+  # def welcome(user)
+  #   @user = user
 
-    mail(to: @user.email, subject: "Welcome to RobertBnb")
-  end
+  #   mail(to: @user.email, subject: "Welcome to RobertBnb")
+  # end
 
-  def booking(booking)
-    @owner = booking.flat.user
-    @user =  booking.user
-    @booking = booking
+  # def booking(booking)
+  #   @owner = booking.flat.user
+  #   @user =  booking.user
+  #   @booking = booking
 
-    mail(to: @owner.email, subject: "New Booking Request")
-  end
+  #   mail(to: @owner.email, subject: "New Booking Request")
+  # end
 
 end

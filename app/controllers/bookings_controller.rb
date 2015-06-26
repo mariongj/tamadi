@@ -21,7 +21,6 @@ before_action :set_booking, only: [ :destroy, :update ]
     @booking = @flat.bookings.new(booking_params)
     @booking.user = current_user
     @booking.status = "pending"
-
     if @booking.save
       redirect_to bookings_path(current_user)
     else
@@ -30,15 +29,10 @@ before_action :set_booking, only: [ :destroy, :update ]
   end
 
   def update
-
-
-    if params[:accept]
-
     if params[:accept] == "true"
-
       # Accepter le booking dans la bdd donc changer le statut
       @booking.update(status: 'confirmed')
-    elsif
+    else
       @booking.update(status: 'refused')
     end
     redirect_to :back
@@ -49,7 +43,7 @@ before_action :set_booking, only: [ :destroy, :update ]
     redirect_to bookings_path
   end
 
-private
+
 
   def set_booking
     @booking = Booking.find(params[:id])
@@ -58,6 +52,5 @@ private
   def booking_params
     params.require(:booking).permit(:nb_travelers, :start_date, :end_date, :message)
   end
-
 
 end

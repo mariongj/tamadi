@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     styles: { medium: "300x300>", thumb: ["50x50#", :png] }
 
 
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def send_welcome_email
-    UserMailer.welcome(self).deliver_now
-  end
+  # def send_welcome_email
+  #   UserMailer.welcome(self).deliver_now
+  # end
 end
