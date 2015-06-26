@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :flats
   has_many :bookings
   has_attached_file :picture,
-    styles: { medium: "300x300>", thumb: "100x100>" }
+    styles: { medium: "300x300>", thumb: ["50x50#", :png] }
 
   after_create :send_welcome_email
 
