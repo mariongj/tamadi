@@ -21,7 +21,6 @@ before_action :set_booking, only: [ :destroy, :update ]
     @booking = @flat.bookings.new(booking_params)
     @booking.user = current_user
     @booking.status = "pending"
-
     if @booking.save
       redirect_to bookings_path(current_user)
     else
@@ -45,6 +44,7 @@ before_action :set_booking, only: [ :destroy, :update ]
   end
 
 
+
   def set_booking
     @booking = Booking.find(params[:id])
   end
@@ -52,6 +52,5 @@ before_action :set_booking, only: [ :destroy, :update ]
   def booking_params
     params.require(:booking).permit(:nb_travelers, :start_date, :end_date, :message)
   end
-
 
 end
