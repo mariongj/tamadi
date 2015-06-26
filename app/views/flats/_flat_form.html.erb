@@ -1,10 +1,12 @@
-<%= simple_form_for [@user, @flat], html: { multipart: true } do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :price_per_night %>
-  <%= f.input :capacity %>
-  <%= f.input :picture %>
-  <%= f.submit %>
-<% end %>
+<div class= "white_card">
+  <%= simple_form_for [@user, @flat], html: { multipart: true } do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :price_per_night %>
+    <%= f.input :capacity %>
+    <%= f.input :picture %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,12 +1,35 @@
-<br>
-<h1 class="text-center"><%= @flats.size %> Search results</h1>
-<br>
-
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
 
-        <div id="map" style='width: 400px; height: 400px'></div>
+  <div class= "white_card">
+
+    <div class= "row padded">
+
+      <br>
+      <h1><%= @flats.size %> Search results</h1>
+      <% @flats.each do |flat| %>
+        <div class= "col-md-6">
+
+          <div class= "card-place">
+
+            <div class="card-place-header"
+                style="background-image: url(<%= flat.picture.url(:medium)%>);">
+            </div>
+
+            <div class="card-place-body">
+              <h3><%= link_to flat.title, flat_path(flat) %></h3>
+              <p><%= flat.price_per_night %>€/night</p>
+              <p><%= flat.capacity %> persons</span></p>
+            </div>
+
+            <div class="card-place-footer">
+              <%= link_to flat_path(flat) do %>
+                <i class="fa fa-search"></i>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+
+      <div id="map" style='width: 400px; height: 400px'></div>
         <% content_for(:after_js) do %>
           <script type="text/javascript">
             $(document).on('ready', function() {
@@ -22,18 +45,10 @@
         <% end %>
 
     </div>
-    <div class="col-xs-12 col-md-6">
-
-       <% @flats.each do |flat| %>
-          <div class= "white_card">
-              <%= image_tag flat.picture.url(:thumb) %>
-              <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
-                  <br>
-          </div>
-        <% end %>
-
-    </div>
   </div>
-  <br>
-  <div class="text-center"><%= link_to "Rent Your Flat", new_flat_path, class: "btn btn-success" %></div>
 </div>
+
+<br>
+<div class="text-center"><%= link_to "Rent Your Flat", new_flat_path, class: "btn btn-success" %></div>
+
+
