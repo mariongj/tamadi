@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
     styles: { medium: "300x300>", thumb: ["50x50#", :png] }
 
-    styles: { medium: "300x300>", thumb: "100x100>" }
-
 
   after_create :send_welcome_email
 
