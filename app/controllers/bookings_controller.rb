@@ -32,7 +32,7 @@ before_action :set_booking, only: [ :destroy, :update ]
     if params[:accept] == "true"
       # Accepter le booking dans la bdd donc changer le statut
       @booking.update(status: 'confirmed')
-    elsif
+    else
       @booking.update(status: 'refused')
     end
     redirect_to :back
@@ -43,7 +43,7 @@ before_action :set_booking, only: [ :destroy, :update ]
     redirect_to bookings_path
   end
 
-  private
+
 
   def set_booking
     @booking = Booking.find(params[:id])
