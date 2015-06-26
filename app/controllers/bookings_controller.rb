@@ -30,7 +30,12 @@ before_action :set_booking, only: [ :destroy, :update ]
   end
 
   def update
+
+
+    if params[:accept]
+
     if params[:accept] == "true"
+
       # Accepter le booking dans la bdd donc changer le statut
       @booking.update(status: 'confirmed')
     elsif

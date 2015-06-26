@@ -3,6 +3,30 @@
     <div class="container ">
       <div class= "white_card ">
       <h1>All my bookings </h1>
+
+        <% if @bookings.first == nil %>
+          <p> You currently have no bookings! Come & rent <%= link_to "here", root_path %> !</p>
+        <% else %>
+          <table class="bookings table table-striped">
+            <% @bookings.each do |booking| %>
+              <tbody>
+                <tr class="shadow-table">
+                  <td ><%= link_to booking.flat.title, flat_path(booking.flat)%></td>
+                  <td ><%= booking.start_date%> au <%= booking.end_date %></td>
+                  <td><%= booking.nb_travelers%></td>
+                  <td><%= booking.status %></td>
+                  <td>  <%= link_to booking_path(booking),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } do %>
+                      <i class="fa fa-trash-o"></i> Delete this booking
+                    <% end %>
+                </td>
+                <% end %>
+                </tr>
+            </tbody>
+          </table>
+        <% end %>
+
         <table class="bookings table table-striped">
           <% @bookings.each do |booking| %>
             <tbody>
@@ -35,6 +59,11 @@
                 <td ><%= booking.start_date%> au <%= booking.end_date %></td>
                 <td><%= booking.nb_travelers%></td>
                 <td><%= booking.status %></td>
+
+                <td>  <%= button_to "Accept", { action: "update", id: booking.id }, method:   :put, params: { accept: true } %>
+                      <%= button_to "Refuse", { action: "update", id: booking.id }, method: :put, params: { accept: false } %>
+                </td>
+
                 <td>
                 <%= link_to booking_path(booking, accept: true), method: :put do %>
                   <i class="fa fa-check"></i> Accept
@@ -44,6 +73,7 @@
                   <i class="fa fa-times"></i> Refuse
                 <% end %>
                 </td>
+
 
               <% end %>
             </tr>

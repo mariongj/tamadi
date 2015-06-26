@@ -1,10 +1,19 @@
 <div class="container">
     <div class= "white_card">
       <h1>My Profile</h1>
+
+      <p><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-success" %></p>
+  <br>
+
+      <p>Email: <%= current_user.email %></p>
+      <p>First name: <%= current_user.first_name %></p>
+      <p>Last name: <%= current_user.last_name %></p>
+
       <%= image_tag current_user.picture.url(:medium) %>
   <br>
       <p>Email: <%= current_user.email %></p>
       <p>Profile created at: <%= current_user.created_at %></p>
+
       <br>
       <p><%= link_to "Go to My Bookings", bookings_path %></p>
 
@@ -20,6 +29,7 @@
       <br>
       <br>
       <% @my_flats.each do |flat| %>
+
         <p><%= image_tag flat.picture.url(:thumb) %></p>
         <h3><%= link_to flat.title, my_flat_flat_path(flat) %></h3>
         <p><%= flat.city %></p>
