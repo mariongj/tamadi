@@ -1,20 +1,39 @@
-<h1><%= @flats.size %> Search results</h1>
-        <br>
+<br>
+<h1 class="text-center"><%= @flats.size %> Search results</h1>
+<br>
+
 <div class="container">
- <% @flats.each do |flat| %>
-    <div class= "white_card">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
 
-        <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
-            <br>
-          <%= link_to "Rent Your Flat" , new_flat_path %>
+        <div id="map" style='width: 400px; height: 400px'></div>
+        <% content_for(:after_js) do %>
+          <script type="text/javascript">
+            $(document).on('ready', function() {
+              handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function(){
+                markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(12);
+              });
+            })
+          </script>
+        <% end %>
+
     </div>
-  <% end %>
+    <div class="col-xs-12 col-md-6">
 
-        <%= image_tag flat.picture.url(:thumb) %>
-        <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
-            <br>
+       <% @flats.each do |flat| %>
+          <div class= "white_card">
+              <%= image_tag flat.picture.url(:thumb) %>
+              <h1><%= link_to flat.title, flat_path(flat) %></h1><span><%= flat.price_per_night %>€ / night, <%= flat.capacity %> persons</span>
+                  <br>
+          </div>
+        <% end %>
+
     </div>
-  <% end %>
-  <%= link_to "Rent Your Flat" , new_flat_path %>
-
+  </div>
+  <br>
+  <div class="text-center"><%= link_to "Rent Your Flat", new_flat_path, class: "btn btn-success" %></div>
 </div>
