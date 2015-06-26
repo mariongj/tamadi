@@ -1,10 +1,12 @@
 <div class="container">
     <div class= "white_card">
       <h1>My Profile</h1>
+      <p><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-success" %></p>
   <br>
 
       <p>Email: <%= current_user.email %></p>
-      <p>Profile created at: <%= current_user.created_at %></p>
+      <p>First name: <%= current_user.first_name %></p>
+      <p>Last name: <%= current_user.last_name %></p>
       <br>
       <p><%= link_to "Go to My Bookings", bookings_path %></p>
 
