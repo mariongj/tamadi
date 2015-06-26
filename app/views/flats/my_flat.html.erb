@@ -37,18 +37,4 @@
 </div>
 
 <br>
-<div class="text-center"><%= link_to "Back to Search results", my_flats_flats_path %></div>
-
-<h2>Book</h2>
-<div class="container list-inline">
-  <%= simple_form_for [@flat, @booking] do |f| %>
-    <%= f.error_notification %>
-
-    <%= f.input :nb_travelers %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :message %>
-
-    <%= f.submit "Book", class: "btn btn-success btn-lg" %>
-  <% end %>
-</div>
+<div class="text-center"><%= link_to "Back to My Flats", my_flats_flats_path %></div>
