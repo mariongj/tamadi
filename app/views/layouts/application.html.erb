@@ -6,16 +6,24 @@
 
   <title>Tamadi</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
+  <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
+
+  <%= javascript_include_tag "application" %>
 
 </head>
 
 <body>
+
+  <%= render "shared/notices" %>
+
   <%= render "shared/navbar" %>
 
-
   <%= yield %>
+
+  <%= yield(:after_js) %>
   <%= render "shared/footer" %>
 </body>
 </html>

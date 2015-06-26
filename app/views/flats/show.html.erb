@@ -1,33 +1,77 @@
 
-<div class="container">
-  <div class= "white_card">
-    <h1><%= @flat.title %></h1>
-      <div class= "card-header">
-       <%= image_tag @flat.picture.url(:medium) %>
+<br>
+<div class="container"></div>
+  <div class="row">
+
+    <div class="col-xs-12 col-md-4">
+      <div class="white_card">
+        <h1><%= @flat.title %></h1>
+        <p><%= @flat.city %></p>
+        <br>
+        <%= image_tag @flat.picture.url(:medium) %>
+        <br>
+        <br>
+        <p><%= @flat.price_per_night %>€ / night - <%= @flat.capacity %> persons</p>
+        <p><%= @flat.address %></p>
       </div>
+    </div>
 
-    <li>Description: <%= @flat.description %></li>
-    <li><%= @flat.price_per_night %>€ / night</li>
-    <li><%= @flat.capacity %> persons</li>
-    <li>Address: <%= @flat.address %>, <%= @flat.city %></li>
+    <div class="col-xs-12 col-md-4">
+      <div id="map" style='width: 400px; height: 400px'></div>
+      <% content_for(:after_js) do %>
+        <script type="text/javascript">
+          $(document).on('ready', function() {
+            handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function(){
+              markers = handler.addMarkers(<%= raw @markers.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              handler.getMap().setZoom(12);
+            });
+          })
+        </script>
+      <% end %>
+    </div>
 
-  </ul>
+    <div class="col-xs-12 col-md-4">
+      <h2>Book</h2>
+      <%= simple_form_for [@flat, @booking] do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :nb_travelers %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :message %>
+        </div>
+        <div class="form-actions text-center">
+          <%= f.submit "Book", class: "btn btn-success btn-lg" %>
+        </div>
+      <% end %>
+    </div>
 
-  <p><%= link_to "Back to Search results", flats_path %></p>
+  </div>
+</div>
 
-  <h2>Interested?</h2>
-    <%= simple_form_for [@flat, @booking] do |f| %>
-      <%= f.error_notification %>
-
-      <%= f.input :nb_travelers %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.input :message %>
-
-      <%= f.submit "Book", class: "btn btn-success btn-lg" %>
-    <% end %>
+<br>
+<div class="text-center"><%= link_to "Back to Search results", my_flats_flats_path %></div>
 
 
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <h2>Book</h2>
+      <%= simple_form_for [@flat, @booking] do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :nb_travelers %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :message %>
+        </div>
+        <div class="form-actions text-center">
+          <%= f.submit "Book", class: "btn btn-success btn-lg" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
